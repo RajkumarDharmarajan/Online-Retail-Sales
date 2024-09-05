@@ -1,6 +1,13 @@
 # Online-Retail-Sales
 This project focuses on the Exploratory Data Analysis (EDA) of an online retail sales dataset. The goal is to uncover valuable insights from the data through various visualizations and analysis techniques. 
-Key Visualizations and Findings
+Key Visualizations and Findings.
+
+#Tools and Libraries Used!
+
+1. Python: For data manipulation and analysis.
+2. Pandas: For data cleaning and preprocessing.
+3. Matplotlib & Seaborn: For data visualization.
+
 Step 1: Understanding the data.
 Step2:  Data Collection – By reading the data set,
  df = pd.read_csv(“Online Retail.csv”)
@@ -55,7 +62,4 @@ Visualizing the top 10 product descriptions based on the maximum quantity of ite
 11. Quantity Count in Descriptions
 Analyzing how many quantities are associated with product descriptions to understand the relationship between product offerings and sales.
 
-Tools and Libraries Used
-Python: For data manipulation and analysis.
-Pandas: For data cleaning and preprocessing.
-Matplotlib & Seaborn: For data visualization.
+
