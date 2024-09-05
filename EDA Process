@@ -1,0 +1,109 @@
+import pandas as pd
+import numpy as np
+
+df = pd.read_csv("Online Retail.csv")
+# print(df)                           #There are 541909rows and 8columns
+
+
+#Describe used to know the mean. median, mode,standard deviation, minimum, maximum. 
+# print(df.describe())     
+
+# item_type = df.dtypes       #Finding the type of the data in the table
+# print(item_type)
+
+#Finding null or na values in the data
+
+# null_values = df.isnull().any()
+# print(null_values)
+
+# Finding how many numbers of null or na values in the individual columns
+
+# null_values_sum = df.isnull().sum()   #1454 null values are there in description. There's no other null values in other columns
+# print(null_values_sum)
+
+#Deleting Null values in Row wise
+
+df = df.dropna(axis=0)
+# print(df)
+
+# rechecking_null = drop.isnull().sum()
+# print(rechecking_null)
+
+
+#Counting how many numbers are there and its counts
+
+quantities = df["Quantity"].value_counts()
+# print("Quantities count")
+# print(quantities)
+
+#Finding Negativie values wxactly where in the data set
+
+negativity_values = df[df["Quantity"] < 0]
+# print(negativity_values)
+
+#Converting those negative values into positive values
+
+df["Quantity"] = df["Quantity"].abs()
+# print(df)
+
+#Finding Negativity values in UnitPrice
+
+unit_negativity = df[df["UnitPrice"] <0]
+# print(unit_negativity)
+
+#Coverting the negative values of unitprice into positive
+
+df["UnitPrice"] = df["UnitPrice"].abs()
+# print(df)
+
+#Removing Unspecified country
+
+df = df[df["Country"] != 'Unspecified']
+# print("Removing Unspecified country")
+# print(df)
+
+#Rewirting the country name
+
+df["Country"] = df["Country"].replace("EIRE", "Ireland")
+# print(df)
+
+#Finding how many number of countries existed and its counts
+
+country = df["Country"].value_counts() 
+# print(country)
+
+#Removing Duplicates
+
+df.drop_duplicates(inplace=True)
+# print(df)
+
+#Finding how many number of description and its counts
+
+description_count = df["Description"].value_counts()
+# print(description_count)
+
+# Creating Date and Time column
+df["InvoiceDate"] = pd.to_datetime(df["InvoiceDate"])
+df["Month"] = df["InvoiceDate"].dt.month
+df["Month_name_year_wise"] = df["InvoiceDate"].dt.month_name()
+df["Day"] = df["InvoiceDate"].dt.day
+df["Year"]  = df["InvoiceDate"].dt.year
+df["Day_name"] = df["InvoiceDate"].dt.day_name()
+df["Cost"] = df["Quantity"] * df["UnitPrice"]
+
+print(df)
+
+#Checking Information of the data set
+
+# print(df.info())
+
+#Finding how many number of null or na values after the data cleaning process
+
+sum_nullvalues = df.isnull().sum()
+# print(sum_nullvalues)
+
+file_path = r'C:\Users\rajro\OneDrive\Desktop\edited.csv'
+df.to_csv(file_path, index = False)
+print(f'The file is saved {file_path}')
+
+
